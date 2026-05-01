@@ -31,33 +31,114 @@ fail:
 
 # Usage
 ```
-NEEDS BASE POINTER.
+-- superlib.exe FUNCTIONS --
 
-+1003 is ADD DWORD. Takes 2 arguments.
-+1011 is ADD WORD. Takes 2 arguments.
-+1022 is ADD BYTE.  Takes 2 arguments.
-+1030 is AND DWORD.  Takes 2 arguments.
-+103E is AND WORD.  Takes 2 arguments.
-+104F is AND BYTE.  Takes 2 arguments.
-+105D is DIV DWORD.  Takes 2 arguments.
-+106D is DIV WORD.  Takes 2 arguments.
-+1081 is DIV BYTE.  Takes 2 arguments.
-+1091 is IDIV DWORD.  Takes 2 arguments.
-+10A0 is IDIV WORD.  Takes 2 arguments.
-+10B3 is IDIV BYTE.  Takes 2 arguments.
-+10C3 is IMUL DWORD. Takes 2 arguments.
-+10D1 is IMUL WORD. Takes 2 arguments.
-+10E2 is IMUL BYTE. Takes 2 arguments.
-+10F0 is MUL DWORD. Takes 2 arguments.
-+10FE is MUL WORD. Takes 2 arguments.
-+110F is MUL BYTE. Takes 2 arguments.
-+111D is NOT DWORD. Takes 1 argument.
-+1127 is NOT WORD. Takes 1 argument.
-+1133 is NOT BYTE. Takes 1 argument.
-+113D is OR DWORD. Takes 2 arguments.
-+1150 is OR WORD. Takes 2 arguments.
-+115C is OR BYTE. Takes 2 arguments.
-+116A is XOR DWORD. Takes 2 arguments.
-+1178 is XOR WORD. Takes 2 arguments.
-+1189 is XOR BYTE. Takes 2 arguments.
+Returns:
+  EAX = result (AL/AX for BYTE/WORD variants)
+
+Registers:
+ Clobbers:
+  EAX EBX EDX ECX
+ 
+ Preserves:
+  ESI EDI EBP
+ 
+Notes:
+ ESP is restored before return
+ [esp] contains the return address
+ DIV/IDIV overwrite EDX (remainder is not preserved)
+
+Flags:
+  Modified according to operation
+
+Calling convention:
+  stdcall (callee cleans stack)
+
+For 2 argument functions:
+  [esp+4] = first argument
+  [esp+8] = second argument
+
+For 1 argument functions:
+  [esp+4] = argument
+
++1003 is ADD DWORD. Takes 2 arguments in stack.
+ Result in EAX
+
++1011 is ADD WORD. Takes 2 arguments in stack.
+ Result in AX
+
++1022 is ADD BYTE.  Takes 2 arguments in stack.
+ Result in AL
+
++1030 is AND DWORD.  Takes 2 arguments in stack.
+ Result in EAX
+
++103E is AND WORD.  Takes 2 arguments in stack.
+ Result in AX
+
++104F is AND BYTE.  Takes 2 arguments in stack.
+ Result in AL
+
++105D is DIV DWORD.  Takes 2 arguments in stack.
+ Result in EAX
+
++106D is DIV WORD.  Takes 2 arguments in stack.
+ Result in AX
+
++1081 is DIV BYTE.  Takes 2 arguments in stack.
+ Result in AL
+
++1091 is IDIV DWORD.  Takes 2 arguments in stack.
+ Result in EAX
+
++10A0 is IDIV WORD.  Takes 2 arguments in stack.
+ Result in AX
+
++10B3 is IDIV BYTE.  Takes 2 arguments in stack.
+ Result in AL
+
++10C3 is IMUL DWORD. Takes 2 arguments in stack.
+ Result in EAX
+
++10D1 is IMUL WORD. Takes 2 arguments in stack.
+ Result in AX
+
++10E2 is IMUL BYTE. Takes 2 arguments in stack.
+ Result in AL
+
++10F0 is MUL DWORD. Takes 2 arguments in stack.
+ Result in EAX
+
++10FE is MUL WORD. Takes 2 arguments in stack.
+ Result in AX
+
++110F is MUL BYTE. Takes 2 arguments  in stack.
+ Result in AL
+
++111D is NOT DWORD. Takes 1 argument   in stack.
+ Result in EAX
+
++1127 is NOT WORD. Takes 1 argument  in stack.
+ Result in AX
+
++1133 is NOT BYTE. Takes 1 argument  in stack.
+ Result in AL
+
++113D is OR DWORD. Takes 2 arguments  in stack.
+ Result in EAX
+
++1150 is OR WORD. Takes 2 arguments  in stack.
+ Result in AX
+
++115C is OR BYTE. Takes 2 arguments  in stack.
+ Result in AL
+
++116A is XOR DWORD. Takes 2 arguments  in stack.
+ Result in EAX
+
++1178 is XOR WORD. Takes 2 arguments  in stack.
+ Result in AX
+
++1189 is XOR BYTE. Takes 2 arguments  in stack.
+ Result in AL
 ```
