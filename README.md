@@ -1,6 +1,34 @@
 # superlib
 A libray that has all of the operations in a CPU.
 
+Bundles every operation in a single libray for use.
+
+# Example
+```assembly
+.data
+  lname db "superlib.exe", 0
+
+.code
+start:
+   push offset lname
+   call LoadLibraryA
+   test eax, eax
+   jz fail
+   add eax, 0x1003
+   push 1
+   push 1
+   call eax
+   jmp success
+
+success:
+    xor eax, eax
+    ret
+   
+fail:
+    mov eax, 0xFFFFFFFF
+    ret
+```
+
 # Usage
 ```
 NEEDS BASE POINTER.
