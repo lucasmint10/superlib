@@ -3,6 +3,8 @@ A libray that has all of the operations in a CPU.
 
 # Usage
 ```
+NEEDS BASE POINTER.
+
 +1003 is ADD DWORD. Takes 2 arguments.
 +1011 is ADD WORD. Takes 2 arguments.
 +1022 is ADD BYTE.  Takes 2 arguments.
